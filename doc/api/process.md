@@ -191,6 +191,14 @@ this, you can either attach a dummy [`.catch(() => { })`][`promise.catch()`] han
 `resource.loaded`, preventing the `'unhandledRejection'` event from being
 emitted, or you can use the [`'rejectionHandled'`][] event.
 
+Note: If no one track `'unhandledRejection'` events, the rejected reason is printed to `stderr`. Example:
+
+```
+$ node
+$ Promise.reject(new Error('Reject Promise'));
+> Uncaught (in promise node:50528) Error: Reject Promise
+```
+
 ## Event: 'warning'
 
 Emitted whenever Node.js emits a process warning.
