@@ -96,3 +96,9 @@ assert.doesNotThrow(() => {
     assert.ifError(e);
   }));
 });
+
+// Deprecation message when digest is undefined
+const expectedWarning = 'crypto.pbkdf2 without specifying' +
+  ' a digest is deprecated. Please specify a digest';
+common.expectWarning('DeprecationWarning', expectedWarning);
+crypto.pbkdf2Sync('', '', 1, 32, undefined);
