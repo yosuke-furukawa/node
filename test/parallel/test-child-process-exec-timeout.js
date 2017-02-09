@@ -43,3 +43,13 @@ cp.exec(cmd, { timeout: 2 ** 30 }, common.mustCall((err, stdout, stderr) => {
   assert.strictEqual(stdout.trim(), 'child stdout');
   assert.strictEqual(stderr.trim(), 'child stderr');
 }));
+
+// Test with undefined kill signal, and it expires.
+cp.exec(cmd, {
+  timeout: 1,
+  killSignal: 'SIGUNDEF'
+}, common.mustCall((err, stdout, stderr) => {
+  assert.strictEqual(err.message, 'Unknown signal: SIGUNDEF');
+  assert.strictEqual(err.cmd, cmd);
+}));
+

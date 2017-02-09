@@ -66,7 +66,7 @@ assert.throws(function() {
 }, invalidOptionsMsg);
 
 // Argument types for combinatorics
-const a = [];
+const a = ['foo'];
 const o = {};
 const c = function c() {};
 const s = 'string';
